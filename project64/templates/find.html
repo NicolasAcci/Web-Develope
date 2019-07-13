@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索</title>
+</head>
+<body>
+<form action="/app64/find/" method="post">
+<div align="center">
+<h1>全网搜索</h1>
+    <p>
+    —————————————————————————————————————————————————————————————————————————————————————————
+</p>
+        {% csrf_token %}
+{% for i in find %}
+        {% load static %}
+        <a href="/app64/article/?p1={{ i.name }}"><img src="/static/img/{{ i.name }}.jpg" alt="" height="200"></a>
+        <li>{{ i.name }}</li>
+        <p>
+    —————————————————————————————————————————————————————————————————————————————————————————
+</p>
+{% endfor %}
+</div>
+</form>
+</body>
+</html>

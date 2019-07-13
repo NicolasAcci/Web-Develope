@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>钱包</title>
+</head>
+<body>
+<form action="/app64/money/" method="post" >
+        {% csrf_token %}
+<div align="right">
+    <a href="{% url 'person' %}">个人中心</a><br>
+</div>
+<div align="center">
+<h1>我的钱包</h1>
+
+    <input type="text" name="un" style="width:150px">
+    <input type="submit" value="充值">
+    <h5>{{ err }}</h5><br>
+    <a href="/app64/person/">返回</a><br>
+</div>
+</form>
+</body>
+</html>

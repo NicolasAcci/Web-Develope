@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文章</title>
+    <style type="text/css">
+                .one {
+                    width: 1000px;
+                    height: 550px;
+                    overflow: scroll;
+                    position: relative;
+                    left: 180px;
+                }
+                .two3 {
+				position: relative;
+                left: 150px;
+			}
+
+                .two1 {
+                    position: relative;
+                left: 100px;
+                bottom:500px;
+
+			}
+                .two2 {
+                    position: relative;
+                left: 1200px;
+                bottom:250px;
+
+			}
+                .two4 {
+                    position: relative;
+                    left: 100px;
+                    bottom:360px;
+
+			}
+                .one2 {
+
+				position: relative;
+                bottom: 70px;
+                left: 110px;
+			}
+    </style>
+</head>
+<body>
+<form method='post' action="/app64/article/">
+<h3>小说</h3>
+    <p>
+    —————————————————————————————————————————————————————————————————————————————————————————
+</p>
+    <div align="center" class="one">
+    {% csrf_token %}
+        {% for i in key1 %}
+        {% load static %}
+            <br>
+            <br>
+            <br>
+        <img src="/static/img/{{ i.Photo }}.jpg" alt="" height="250">
+        <h3>{{ i.Book_name }}</h3>
+        <p>{{ i.Author }}  著</p>
+            <p>月票：{{ i.Card }} </p>
+ {% endfor %}
+</div>
+<div class="two4">
+                {% if books.has_next %}
+                    <a href="/app64/loge/">开始阅读</a>
+                {% endif %}
+</div>
+   <div class="two1">
+ {% for i in key1 %}
+    <a href="/app64/catalog/?t4={{ i.Book_name }}">目录</a><br>
+    <a href="/app64/index/">返回</a><br>
+     <a  href="/app64/addbook/?t1={{ i.Book_name }}">加入书架</a><br>
+     <a href="/app64/reward/?t3={{ i.Book_name }}">打赏</a><br>
+     <a href="/app64/vote/?t2={{ i.Book_name }}">投票</a>
+
+</div>
+{% endfor %}
+</form>
+<h2>留言区</h2>
+    <div  class="one">
+{% load static %}
+        {% for i in key3 %}
+__________________________________________________
+<div align="left"><img src="/static/img/{{ i.photo }}.jpg" alt="" height="70"></div>
+<div align="left" class="one2"> {{ i.user_name }} {{ i.b_time }}<br>{{ i.word }}</div>
+ {% endfor %}
+    </div>
+ <form method='post' action="/app64/word/">
+    {% csrf_token %}
+ <div class="two3">
+     书名：<input type="text" name="book_name" style="width:250px">
+ <input type="text" name="word" style="width:500px">
+     <input type="submit" value="留言"><br>
+ </div>
+</form>
+</body>
+</html>

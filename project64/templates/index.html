@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <style type="text/css">
+        .one {
+
+				position: relative;
+                top: 30px;
+                left: 1000px;
+			}
+        .one1 {
+
+				position: relative;
+                left: 160px;
+			}
+        .one2 {
+
+				position: relative;
+                left: 180px;
+			}
+        .one3 {
+
+				position: relative;
+                left: 900px;
+			}
+        .two {
+
+				position: relative;
+                left: 250px;
+
+			}
+        .two1 {
+
+				position: absolute;
+                left: 190px;
+
+			}
+                .two2 {
+
+				position: absolute;
+                    left: 250px;
+                    bottom:0px;
+			}
+                .three {
+
+				position: relative;
+                top: 600px;
+
+			}
+        	.four{
+                position: relative;
+                right: 150px;
+                bottom:520px;
+			}
+        	.five{
+                position: relative;
+                left: 180px;
+			}
+        	.six{
+				width: 200px;
+				height: 400px;
+                border:2px #b6abff solid;
+                position: relative;
+                left: 980px;
+                bottom:908px;
+			}
+    </style>
+</head>
+<body>
+<div class="one1">
+ {% load static %}
+ <a href="{% url 'index' %}">
+     <img src="/static/img/2.jpg"  alt=""  height="80" width="250" align="left">
+ </a>
+</div>
+<form method='post' action="/app64/index/">
+<div class="one3" >
+     {% load static %}
+      <img src="/static/img/{{ user }}.jpg" alt="" height="30" width="30">{{ user }}
+    <a href="{% url 'login' %}">注销</a>
+    <a href="{% url 'person' %}">个人中心</a><br>
+</div></form>
+
+<form method='post' action="/app64/find/">
+    {% csrf_token %}
+ <div class="two">
+ <input type="text" name="find" style="width:250px">
+     <input type="submit" value="搜索"><br>
+ </div>
+</form>
+<br>
+ <br>
+ <div class="two1">
+    <a href="{% url 'sort' %}"><button style="width:150px">全部作品</button></a>
+    <a href="{% url 'ranklist' %}"><button style="width:150px">排行榜</button></a>
+    <a href="{% url 'urban' %}"><button style="width:150px">女生专区</button></a>
+    <a href="{% url 'sort' %}"><button style="width:150px">男生专区</button></a>
+     <a href="{% url 'Author' %}"><button style="width:150px">作家专区</button></a>
+     <a href="{% url 'my_addbook' %}"><button style="width:150px">我的书架</button></a>
+     <a href="{% url 'make_author' %}"><button style="width:150px">管理界面</button></a>
+</div>
+<p>
+    —————————————————————————————————————————————————————————————————————————————————————————
+</p>
+<div class="one2">
+ <a href="{% url 'index' %}">
+     <img src="/static/img/I3.jpeg" alt=""  height="80" width="1000" align="left">
+ </a>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+<form action="/app64/index/" method="post">
+<div  class="one">
+    {% for i in key4 %}
+        <a href="/app64/urban/?p2={{ i }}"><p>{{i}}</p></a>
+{% endfor %}
+</div>
+</form>
+<div align="center" class="two2">
+{% load static %}
+ <a href="{% url 'index' %}">
+     <img src="/static/img/I2.jpg" alt=""  height="300" width="650" align="left">
+ </a><br>
+</div>
+
+<form action="/app64/ranklist/" method="post">
+<div align="left" class="five">
+<h1>总排行榜</h1>
+    <p>
+    —————————————————————————————————————————————————————————————————————————————————————————
+</p>
+        {% csrf_token %}
+{% for i in key7 %}
+        {% load static %}
+        <a href="/app64/article/?p1={{ i.name }}"><img src="/static/img/{{ i.name }}.jpg" alt="" height="60"></a>
+        <li>{{ i.name }}   ----    {{ i.Card }}</li>
+{% endfor %}
+</div>
+
+<div align="right" class="four">
+<h1>都市排行榜</h1>
+        {% csrf_token %}
+{% for i in key8 %}
+        {% load static %}
+        <a href="/app64/article/?p1={{ i.name }}"><img src="/static/img/{{ i.name }}.jpg" alt="" height="60"></a>
+        <li>{{ i.name }}   ----    {{ i.Card }}</li>
+{% endfor %}
+</div>
+
+</form>
+
+
+<div class="three" >
+<p>
+    ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+</p></div>
+</body>
+</html>

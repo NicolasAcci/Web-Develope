@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <title>分页</title>
+      <style type="text/css">
+          .one {
+                    width: 1000px;
+                    height: 550px;
+                    overflow: scroll;
+                    position: relative;
+                    left: 180px;
+          }
+          .two4 {
+                    position: relative;
+                    left: 100px;
+                    bottom:360px;
+
+			}
+
+</style>
+</head>
+<form method='post' action="/app64/loge/">
+<h3>小说</h3>
+    <p>
+    —————————————————————————————————————————————————————————————————————————————————————————
+</p>
+    <div align="center" class="one">
+    {% csrf_token %}
+    {% for book in books %}
+            <span>{{ book }} <br /></span>
+        {% endfor %}
+                   <p>
+    —————————————————————————————————————————————————————————————————————————————————————————
+</p>
+</div>
+<div class="two4">
+       {% if books.has_previous %}
+                    <a  href="?page={{ books.previous_page_number }}">上一章</a>
+                {% endif %}
+                <br>
+                {% if books.has_next %}
+                    <a href="?page={{ books.next_page_number }}">下一章</a>
+                {% endif %}
+    <br> <br> <br>
+     <a href="/app64/index/">返回</a><br>
+
+
+
+</div>
+</form>
+</html>

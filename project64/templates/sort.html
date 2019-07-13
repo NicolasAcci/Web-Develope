@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分类</title>
+</head>
+	<body>
+
+<form action="/app64/sort/" method="post">
+<div align="center">
+<h1>全部作品</h1>
+    <p>
+    —————————————————————————————————————————————————————————————————————————————————————————
+</p>
+        {% csrf_token %}
+{% for i in key5 %}
+        {% load static %}
+        <a href="/app64/article/?p1={{ i.name }}"><img src="/static/img/{{ i.name }}.jpg" alt="" height="200"></a>
+        <p><<{{ i.name }}>></p>
+        <p>
+    —————————————————————————————————————————————————————————————————————————————————————————
+</p>
+{% endfor %}
+</div>
+</form>
+	</body>
+</html>

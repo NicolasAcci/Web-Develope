@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>都市</title>
+        <style type="text/css">
+        .one {
+
+				position: relative;
+                top: 100px;
+                left: 400px;
+			}
+                    .one1 {
+
+				position: relative;
+                bottom: 100px;
+                right: -150px;
+			}
+</style>
+</head>
+<body>
+<form action="/app64/urban/" method="post">
+
+<h1>类型</h1>
+
+    —————————————————————————————————————————————————————————————————————————————————————————
+
+        {% csrf_token %}
+{% for i in key %}
+        {% load static %}
+    <div align="left" class="one">
+        <a  href="/app64/article/?p1={{ i.name }}"><img  src="/static/img/{{ i.name }}.jpg" alt="" height="200"></a>
+    </div>
+
+    <div align="center" class="one1">
+    <h4><<{{ i.name }}>></h4>
+    <h5>{{ i.Author }}  著</h5>
+    <li>{{ i.Art_path }}</li>
+    <p>{{ i.Card }} 票</p>
+</div>
+    —————————————————————————————————————————————————————————————————————————————————————————
+
+{% endfor %}
+
+</form>
+</body>
+</html>

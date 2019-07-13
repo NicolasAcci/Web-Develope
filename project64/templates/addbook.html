@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>收藏</title>
+
+</head>
+<body>
+<form action="/app64/my_addbook/" method="get">
+<h1>我的收藏</h1>
+
+    —————————————————————————————————————————————————————————————————————————————————————————
+{% csrf_token %}
+{% for i in key1 %}
+{% load static %}
+ <a  href="/app64/article/?p1={{ i.book_name }}"><img  src="/static/img/{{i.book_name}}.jpg" height="200"></a>
+<h4><<{{ i.book_name }}>></h4>
+     <a href="/app64/delete_my_addbook/?q1={{ i.book_name }}">取消收藏</a><br>
+    —————————————————————————————————————————————————————————————————————————————————————————
+{% endfor %}
+</form>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <style>
+                .one1 {
+
+				position: relative;
+                left: 0px;
+			}
+                .one3 {
+
+				position: relative;
+                left: 900px;
+			}
+    </style>
+</head>
+<body>
+
+<form method='post' action="/app64/person/">
+    <div class="one1">
+ {% load static %}
+ <a href="{% url 'index' %}">
+     <img src="/static/img/2.jpg"  alt=""  height="80" width="250" align="left">
+ </a>
+</div>
+<div class="one3" >
+     {% load static %}
+      <img src="/static/img/{{ user }}.jpg" alt="" height="30" width="30">{{ user }}
+    <a href="{% url 'login' %}">注销</a>
+    <a href="{% url 'person' %}">个人中心</a><br>
+</div>
+</form>
+
+<h2>个人中心</h2>
+
+<p>______________________________________________________________________</p>
+<div align="center">
+
+       {% csrf_token %}
+{% for i in user1 %}
+        {% load static %}
+    <p>等级：{{ i.level}}</p>
+    <img  src="/static/img/{{ i.Photo }}" alt="" height="100"></a>
+    <p>名称：{{ i.name }}</p>
+    <p>月票：{{ i.Card }} </p>
+    <p>书币：{{ i.money }} </p>
+    {% endfor %}
+    <a href="{% url 'my_addbook' %}"><button style="width:150px">收藏</button></a>
+    <a href="{% url 'money' %}"><button style="width:150px">钱包</button></a>
+    <a href="{% url 'index' %}"><button style="width:150px">返回主页</button></a><br>
+
+</div>
+
+</body>
+</html>

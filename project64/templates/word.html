@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>留言</title>
+        <style type="text/css">
+        .one {
+
+				position: relative;
+                bottom: 70px;
+                left: 110px;
+			}
+        </style>
+</head>
+<body>
+<h1>留言成功</h1>
+
+{% for i in key3 %}
+<a href="/app64/article/?p1={{ i.book_name }}">返回</a>
+ {% endfor %}
+
+
+</body>
+</html>

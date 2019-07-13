@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>排行榜</title>
+</head>
+<body>
+<form action="/app64/ranklist/" method="post">
+<div align="left">
+<h1>排行榜</h1>
+    <p>
+    —————————————————————————————————————————————————————————————————————————————————————————
+</p>
+        {% csrf_token %}
+{% for i in key7 %}
+        {% load static %}
+        <a href="/app64/article/?p1={{ i.name }}"><img src="/static/img/{{ i.name }}.jpg" alt="" height="60"></a>
+        <li>{{ i.name }}   ----    {{ i.Card }}</li>
+{% endfor %}
+</div>
+
+<div align="right">
+<h1>排行榜</h1>
+    <p>
+    —————————————————————————————————————————————————————————————————————————————————————————
+</p>
+        {% csrf_token %}
+{% for i in key8 %}
+        {% load static %}
+        <a href="/app64/article/?p1={{ i.name }}"><img src="/static/img/{{ i.name }}.jpg" alt="" height="60"></a>
+        <li>{{ i.name }}   ----    {{ i.Card }}</li>
+{% endfor %}
+</div>
+</form>
+</body>
+</html>

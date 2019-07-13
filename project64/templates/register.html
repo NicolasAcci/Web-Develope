@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+<body>
+<div align="center">
+    <h1>注册</h1>
+    <form action="/app64/register/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        用户:<input type="text" name="username" style="width:150px"><br>
+        密码:<input type="text" name="password" style="width:150px"><br>
+        确认密码:<input type="text" name="re_pwd" style="width:150px"><br>
+        <br>
+        成为作家:<input type="radio" name="author"  value='是' >是
+                  <input type="radio" name="author" value='否' >否<br>
+        <br>
+        上传头像：<input type="file" name="file" ><br>
+            <input type="reset" value="重置">
+            <input type="submit" value="注册">
+ <h5>{{ err }}</h5>
+    </form>
+<a href="{% url 'login' %}"><button style="width:150px">返回</button></a>
+
+</div>
+</body>
+</html>
